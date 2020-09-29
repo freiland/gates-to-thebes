@@ -2,14 +2,14 @@ class Sphinx
   #attr_accessor
   
   def initialize(answer_one, answer_two, answer_three)
-    @answer_one = answer_one.upcase()
-    @answer_two = answer_two.upcase()
-    @answer_three = answer_three.upcase()
+    @answer_one = answer_one
+    @answer_two = answer_two
+    @answer_three = answer_three
 
   end
 
   def check
-    if (answer_one == 'SUN' || answer_one == "THE SUN") & (answer_two == "STARS" || answer_one == "THE STARS") & (answer_three == "RIVER" || answer_three = "A RIVER") 
+    if ((@answer_one == 'SUN') & (@answer_two == "STARS") & (@answer_three == "RIVER"))
       return true 
     else
       return false 

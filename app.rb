@@ -1,28 +1,31 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/album')
+require('./lib/sphinx')
 require('pry')
 also_reload('lib/**/*.rb')
 
 get ('/') do
-  erb :homepage
+  erb(:homepage)
 end
 
-
-
-get ('/riddles')
-  erb :riddles 
+get('/riddles') do
+  erb(:riddles)
 end
 
-post ('/riddles') do
-  #code here 
-end 
-
-get ('/wrong_answer')
-  erb :wrong_answer
+post('/riddles') do
+  answer1 = params[:riddle_one]
+  answer2 = params[:riddle_two]
+  answer3 = params[:riddle_three]
+  @answers = Sphinx.new(answer1, answer2, answer3)
+  @finalAnswers = @answers.check()
+  erb(:wrong_answer)
 end
 
-get ('/thebes')
-  erb :thebes
+get('/wrong_answer') do
+  erb(:wrong_answer)
+end
+
+get('/thebes') do
+  erb(:thebes)
 end
 
