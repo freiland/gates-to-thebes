@@ -1,0 +1,31 @@
+2<h1>The Gates to Thebes</h1>
+
+<h2>Answer the Sphinxs Riddles to enter the city</h2>
+
+<h3>Answer incorrectly at your own peril!</h3>
+
+<% # if riddle == true =%>
+  # route to thebes 
+  <ul>
+  <% @albums.each do |album| %>
+    <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+  <% end %>
+    
+  </ul>
+<% # else route to fail %>
+  <p>There are currently no records to display.</p>
+<% end %>
+
+<form action="/albums">
+  <div class="form-group">
+    <label for="riddle_one">Never resting, never still; moving silently from hill to hill; it does not walk, run or trot; all is cool where it is not.</label>
+    <input id="riddle_one" name="riddle_one" class="form-control" type="text">
+    <label for="riddle_two">At night they come without being fetched, and by day they are lost without being stolen.</label>
+    <input id="riddle_two" name="riddle_two" class="form-control" type="text">
+    <label for="riddle_three">What can run, but never walks; has a mouth, but never talks; has a head, but never weeps; has a bed, but never sleeps?</label>
+    <input id="riddle_three" name="riddle_three" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Check Answers!</button>
+</form>
+
+<a href="/albums/new">Add a new album</a>
